@@ -1,6 +1,32 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: #050521;
+  color: white;
+}
 .none {
   display: none;
 }
 .nono {
   display: flex;
+}
+.header {
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  padding: 10px 20px;
+  backdrop-filter: blur(15px);
+}
+.header-container {
+  margin: 0 auto;
+  width: 1250px;
 }
