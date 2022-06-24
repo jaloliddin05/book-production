@@ -14,7 +14,8 @@ CREATE TABLE users(
 --  categories (id,name)
 CREATE TABLE categories(
     category_id uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
-    category_name text not null
+    category_name text not null,
+    category_img text
 );
 
 --  books (id,name,price,count,author,year,category_id)
@@ -26,7 +27,8 @@ book_count int not null,
 book_author text not null,
 book_year int not null,
 category_id uuid not null REFERENCES categories(category_id),
-book_language text not null
+book_language text not null,
+about_book text
 );
 --  user_book (id,book_id,user_id)
 
@@ -41,7 +43,8 @@ CREATE TABLE user_book(
 CREATE TABLE arxiv(
     arxiv_id uuid DEFAULT uuid_generate_v4() NOT NULL PRIMARY KEY,
     book_id uuid not null,
-    user_id uuid not null
+    user_id uuid not null,
+    arxiv_time TIMESTAMP not null
 );
 
 
@@ -83,3 +86,18 @@ INSERT INTO user_book(book_id, user_id) VALUES
 ('26562692-1677-4cdb-ac45-27cc7f31418e', 'a4d4d78c-17e9-4f6f-9764-bc8ed7320256'),
 ('ba2ce890-ceed-4151-96e3-e5bb7f40e6f5', '491c7689-578c-4677-8d04-6e93fe645d61'),
 ('b870d2c0-d226-4df9-914b-edcfff46d365', '491c7689-578c-4677-8d04-6e93fe645d61');
+
+
+-- CHANGES
+
+
+CREATE TABLE book_raiting(
+    book_raiting_id uuid DEFAULT uuid_generate_v4() NOT NULL,
+    book_id uuid not null,
+    book_raiting_count int not null,
+    book_raiting_score int not null
+);
+
+-- ALTER TABLE books ADD COLUMN about_book text;
+-- ALTER TABLE categories ADD COLUMN category_img text;
+-- ALTER TABLE arxiv ADD COLUMN arxiv_time TIMESTAMP NOT NULL;
