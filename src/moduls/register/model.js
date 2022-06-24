@@ -12,7 +12,7 @@ const getUser = (username, password) =>
 const checkUsername = (user_name) => fetchData(check_usrname, user_name);
 
 const addUser = (full_name, user_name, email, password) =>
-  fetchData(add_user, full_name, user_name, email, password);
+  fetchData(add_user, full_name, user_name, password, email);
 
 module.exports = {
   getUser,

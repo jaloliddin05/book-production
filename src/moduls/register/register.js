@@ -3,7 +3,7 @@ const { sign } = require("../../utils/jwt");
 
 module.exports = {
   GET: (_, res) => {
-    res.render("register");
+    res.render("register", { msg: "" });
   },
   POST: async (req, res) => {
     const { full_name, user_name, email, password } = req.body;
@@ -23,7 +23,8 @@ module.exports = {
       }
     } else {
       console.log(full_name, user_name, email, password);
-      const { exists } = await register.checkUsername(user_name);
+      const [{ exists } = check] = await register.checkUsername(user_name);
+      console.log(exists);
       if (!exists) {
         const add_user = await register.addUser(
           full_name,
@@ -39,6 +40,8 @@ module.exports = {
           }
         );
         return res.redirect("/bookmaniya");
+      } else {
+        res.render("register", { msg: "Bunday username mavjud" });
       }
     }
   },
