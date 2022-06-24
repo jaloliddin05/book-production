@@ -7,10 +7,6 @@ module.exports = {
   },
   POST: async (req, res) => {
     const { full_name, user_name, email, password } = req.body;
-<<<<<<< HEAD
-=======
-
->>>>>>> main
     if (!full_name) {
       const findUser = await register.getUser(user_name, password);
       if (!findUser) {
