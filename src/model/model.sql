@@ -28,7 +28,8 @@ book_author text not null,
 book_year int not null,
 category_id uuid not null REFERENCES categories(category_id),
 book_language text not null,
-about_book text
+about_book text,
+book_img text
 );
 --  user_book (id,book_id,user_id)
 
