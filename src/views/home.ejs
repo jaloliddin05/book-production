@@ -18,7 +18,15 @@
       <nav class="">Hello world</nav>
     </header>
     <!--  -->
-    <main class=""></main>
+    <main class="">
+      <ul class="">
+        <% allCategories.map(c=>{ %>
+        <li class="">
+          <p class=""><%= c.category_name %></p>
+        </li>
+        <% }) %>
+      </ul>
+    </main>
 
     <!-- ..............  -->
     <script

@@ -7,6 +7,10 @@ module.exports = {
   },
   POST: async (req, res) => {
     const { full_name, user_name, email, password } = req.body;
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     if (!full_name) {
       const findUser = await register.getUser(user_name, password);
       if (!findUser) {
@@ -14,7 +18,7 @@ module.exports = {
       } else {
         res.cookie(
           "access_token",
-          sign({ id: findUser.id, role: findUser.user_status }),
+          sign({ id: findUser.user_id, role: findUser.user_status }),
           {
             maxAge: 12 * 3600 * 1000,
           }
