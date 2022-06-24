@@ -10,6 +10,7 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/css/home.css" />
     <title>Document</title>
   </head>
   <body>
@@ -19,13 +20,16 @@
     </header>
     <!--  -->
     <main class="">
-      <ul class="">
-        <% allCategories.map(c=>{ %>
-        <li class="">
-          <p class=""><%= c.category_name %></p>
-        </li>
+      <div class="container">
+        <% allCategories.map((c,i)=>{ %>
+        <ul class="category_list">
+          <% allBooks.filter(b=> b.category_id == c.category_id).map((book,j)=>{
+          %>
+          <li class=""><%= book.book_name %></li>
+          <% }) %>
+        </ul>
         <% }) %>
-      </ul>
+      </div>
     </main>
 
     <!-- ..............  -->
