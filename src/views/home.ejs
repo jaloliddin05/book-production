@@ -19,7 +19,7 @@
       <div class="header-container">
         <a
           href="/bookmania"
-          class="d-flex align-items-center text-decoration-none logo"
+          class="align-items-center text-decoration-none logo"
           title="Home | Bookmania"
         >
           <img
@@ -32,8 +32,11 @@
             bookmania
           </p>
         </a>
-
-        <nav class=""></nav>
+        <form action="/shop" method="get" class="position-absolute shopp">
+          <button class="position-absolute shopp bg-transparent" type="submit">
+            shop
+          </button>
+        </form>
       </div>
     </header>
     <!--  -->
@@ -41,18 +44,18 @@
       src="<%= allCategories[0].category_img %>"
       alt=""
       width="1100"
-      height="500"
+      height="550"
       class="hero_img"
       id="hero-img"
     />
     <main class="main">
       <div class="container">
         <div>
-          <div class="container d-flex">
+          <div class="category_box d-flex">
             <% allCategories.map((c,i)=>{ %>
             <button
               data-category-index="<%= i %>"
-              class="btn btn-outline-primary category_btns"
+              class="fw-semibold text-capitalize text-break category_btns mx-2 activate_no"
             >
               <%= c.category_name %>
             </button>
@@ -73,7 +76,7 @@
                   width="170"
                   height="250"
                 />
-                <span>🌟0</span>
+                <span>⭐️0</span>
                 <form action="/book" method="post">
                   <input
                     type="text"
@@ -81,14 +84,16 @@
                     name="book_id"
                     value="<%= book.book_id%>"
                   />
-                  <button class="btn_more" type="submit">MORE</button>
+                  <button class="btn_more" type="submit">
+                    Buy <%= book.book_price%>$
+                  </button>
                 </form>
               </div>
             </li>
             <% }) %>
           </ul>
+          <% }) %>
         </div>
-        <% }) %>
       </div>
     </main>
 

@@ -7,10 +7,6 @@
 html {
   scroll-behavior: smooth;
 }
-body {
-  background: #050521;
-  color: white;
-}
 .none {
   display: none;
 }
@@ -19,15 +15,17 @@ body {
 }
 .main {
   position: relative;
-  background: #114556;
+  background: #ffffff;
   z-index: 111;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  margin-top: -50px;
 }
 .header {
-  width: 100vw;
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 9;
   padding: 10px 20px;
   backdrop-filter: blur(15px);
 }
@@ -35,10 +33,85 @@ body {
   margin: 0 auto;
   width: 1250px;
 }
+.logo img,
+.logo p {
+  display: inline-block;
+  width: fit-content;
+}
 #hero-img {
-  border: 1px solid red;
-  margin-left: 50px;
+  position: sticky;
+  top: 0px;
+  z-index: -10;
+  width: 100%;
+  margin-top: -75px;
+}
+.category_btns {
   position: sticky;
   top: 0;
-  z-index: -10;
+}
+.category_box {
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  /* backdrop-filter: blur(10px); */
+  width: 99vw;
+  margin-left: -120px;
+  /* box-shadow: inset 0 0 200px #ffffff6b; */
+  justify-content: center;
+  border-top-left-radius: 20%;
+}
+.activate {
+  box-shadow: 0px 2px 0px 0.1px rgba(0, 0, 0, 0.366) !important;
+}
+.activate_no {
+  padding: 2px 10px;
+  border: none;
+  background: #fff;
+  border-radius: 0px;
+  box-shadow: 0px 0px 0px 0.2px rgba(0, 0, 0, 0.366);
+}
+.category_list {
+  flex-wrap: wrap;
+  justify-content: baseline;
+  list-style: none;
+}
+.book-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  margin: 10px;
+}
+.book-box span {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  backdrop-filter: blur(30px);
+  color: goldenrod;
+  font-weight: bold;
+}
+.book-box img {
+  padding-bottom: 3px;
+  box-shadow: 0 3px 0 0px #000000c1;
+  border-left: 1px #00000098 solid;
+  border-right: 1px #00000098 solid;
+  margin-bottom: 4px;
+}
+.book-box button {
+  width: 100%;
+  border: none;
+  background-color: #2954d5;
+  color: #ffffff;
+  font-weight: bolder;
+  border-radius: 3px;
+}
+
+.shopp {
+  top: 10px;
+  right: 30px;
+  color: #2954d5;
+  font: bold;
 }
