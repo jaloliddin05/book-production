@@ -1,12 +1,16 @@
 const BOOK = require("./model");
 
 module.exports = {
-  GET: (req, res) => {
-    res.render("book");
+  GET: async (req, res) => {
+    const { book_id } = req.params;
+
+    const currentBook = await BOOK.getSingleBook(book_id);
+
+    res.render("book", { currentBook });
   },
-  POST: async (req, res) => {
+  POST: (req, res) => {
     const { book_id } = req.body;
 
-    const curretn_book = await BOOK.getSingleBook(book_id);
+    res.redirect(`/book/${book_id}`);
   },
 };
