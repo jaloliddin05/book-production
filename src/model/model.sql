@@ -28,7 +28,8 @@ book_author text not null,
 book_year int not null,
 category_id uuid not null REFERENCES categories(category_id),
 book_language text not null,
-about_book text
+about_book text,
+book_img text
 );
 --  user_book (id,book_id,user_id)
 
@@ -57,11 +58,11 @@ INSERT INTO users(full_name,user_name,user_password,email,user_status) VALUES
 ('John Doe','John','Doe','johndoe@gmail.com','user');
 
 INSERT INTO categories(category_name) VALUES
-('Programming'),
-('Historical'),
-('Romance'),
-('Science Fiction'),
-('Fantasy');
+('Чтото');
+-- ('Historical'),
+-- ('Romance'),
+-- ('Science Fiction'),
+-- ('Fantasy');
 
 
 INSERT INTO books(book_name,book_price,book_count,book_author,book_year,category_id,book_language) VALUES
