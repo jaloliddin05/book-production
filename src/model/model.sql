@@ -58,11 +58,11 @@ INSERT INTO users(full_name,user_name,user_password,email,user_status) VALUES
 ('John Doe','John','Doe','johndoe@gmail.com','user');
 
 INSERT INTO categories(category_name) VALUES
-('Programming'),
-('Historical'),
-('Romance'),
-('Science Fiction'),
-('Fantasy');
+('Чтото');
+-- ('Historical'),
+-- ('Romance'),
+-- ('Science Fiction'),
+-- ('Fantasy');
 
 
 INSERT INTO books(book_name,book_price,book_count,book_author,book_year,category_id,book_language) VALUES
