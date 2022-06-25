@@ -1,5 +1,5 @@
 -- PROCEDURE FOR BUYING BOOK
-CREATE OR REPLACE PROCEDURE buy_book(b_id int, u_id int)
+CREATE OR REPLACE PROCEDURE buy_book(b_id uuid, u_id uuid)
 LANGUAGE plpgsql
 AS
 $$

@@ -10,49 +10,157 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/css/book.css" />
     <title>Document</title>
   </head>
-  <body>
+  <body class="bg-light">
     <main>
       <div class="container mt-4 d-flex justify-content-center">
-        <div class="w-75">
-          <div class="d-flex flex-column align-items-center p-5 w-100">
-            <div class="">
+        <div class="w-100 big_container">
+          <div class="d-flex flex-column align-items-center w-100 book_top">
+            <div class="overlay"></div>
+            <img
+              src="<%= currentBook.book_img %>"
+              class="w-100 beck_img"
+              height="300"
+              alt=""
+            />
+            <img
+              src="<%= currentBook.book_img %>"
+              width="200"
+              height="300"
+              alt=""
+              class="current_book_img"
+            />
+            <div class="w-50 titles_div">
               <h1 class="h1 text-white"><%= currentBook.book_name %></h1>
+              <div class="d-flex align-items-center">
+                <img
+                  src="https://picsum.photos/45/45"
+                  alt=""
+                  class="rounded-circle"
+                  width="45"
+                  height="45"
+                />
+                <p class="mx-3 text-white"><%= currentBook.book_author %></p>
+              </div>
             </div>
           </div>
-          <div class="d-flex justify-content-end p-3 w-100">
-            <button class="btn btn-primary rounded text-white">
-              Buy <%= currentBook.book_price %>$
-            </button>
-            <button class="btn btn-outline-primary bg-white text-primary">
-              Free Semple
-            </button>
-            <button class="btn border-0 bg-white text-primary">
+          <div class="d-flex justify-content-end p-3 w-100 bg-white">
+            <form action="/book" method="post">
+              <input
+                type="text"
+                class="d-none"
+                name="book_buy_id"
+                value="<%= currentBook.book_id %> "
+              />
+              <button class="btn btn-primary rounded-pill text-white mx-5 px-5">
+                Buy <%= currentBook.book_price %>$
+              </button>
+            </form>
+            <a
+              class="btn btn-outline-primary rounded-pill bg-white text-primary mx-5 px-5 rating_modal_btn"
+              data-bs-toggle="modal"
+              href="#exampleModalToggle"
+              role="button"
+              data-current-book-name="<%= currentBook.book_name %>"
+              data-current-book-id="<%= currentBook.book_id %> "
+            >
+              Rate book
+            </a>
+
+            <button
+              class="btn border-0 rounded-pill bg-white mx-5 text-primary px-5"
+            >
               To Wishlist
             </button>
           </div>
-          <div class="w-100">
-            <div class="w-25 d-flex flex-column">
+          <div class="w-100 bg-white d-flex">
+            <div class="w-25 d-flex flex-column about_box">
               <h3 class="">About</h3>
-              <p class=""><%= currentBook.about_book %></p>
+              <p class="">
+                <%= currentBook.about_book.replaceAll("*","'").substring(0,200)
+                %> ...
+              </p>
               <div class="d-flex justify-content-between w-100">
-                <button class="btn bg-white text-primary"></button>
-                <button class="btn bg-white text-primary"></button>
-                <button class="btn bg-white text-primary"></button>
+                <button class="btn bg-white btn-outline-primary text-primary">
+                  <%= category_name %>
+                </button>
               </div>
             </div>
-            <div class="w-75 d-flex flex-column">
+            <div class="w-75 d-flex flex-column mx-5">
               <h3 class="">You may also like</h3>
-              <ul class="d-flex list-unstyled"></ul>
+              <ul class="d-flex list-unstyled">
+                <% allBooks.filter((a,i)=> i<5).map((b,j)=>{ %>
+                <li class="ather_books_item">
+                  <form action="/book" method="post">
+                    <input
+                      type="text"
+                      name="book_id"
+                      value="<%= b.book_id %>"
+                      class="d-none"
+                    />
+                    <button class="border-0 bg-transparent p-0">
+                      <img
+                        src="<%= b.book_img %> "
+                        alt=""
+                        width="120"
+                        height="150"
+                        class="ather_books_img"
+                      />
+                    </button>
+                  </form>
+                  <h6 class="text-break">
+                    <%= b.book_name.substring(0,22) %>...
+                  </h6>
+                  <p class="text-primary">$ <%= b.book_price %></p>
+                </li>
+                <% }) %>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </main>
 
+    <div
+      class="modal fade"
+      id="exampleModalToggle"
+      aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body d-flex align-items-center">
+            <span class="rate_circles fa fa-star"></span>
+            <span class="rate_circles fa fa-star"></span>
+            <span class="rate_circles fa fa-star"></span>
+            <span class="rate_circles fa fa-star"></span>
+            <span class="rate_circles fa fa-star"></span>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary rate_btn" type="submit">rate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!--  -->
+    <script src="/js/book.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"

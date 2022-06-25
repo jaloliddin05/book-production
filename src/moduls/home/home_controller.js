@@ -14,9 +14,7 @@ module.exports = {
         //   return res.redirect("/admin");
         // } else {
         const allCategories = await home.getAllCategories();
-        console.log(allCategories);
         const allBooks = await home.getAllBooks();
-        console.log(allBooks);
         const currentUser = await home.getCurrentUser(decode.id);
 
         return res.render("home", { allBooks, allCategories, currentUser });
