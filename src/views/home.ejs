@@ -37,43 +37,65 @@
       </div>
     </header>
     <!--  -->
-    <main class="">
+    <img
+      src="<%= allCategories[0].category_img %>"
+      alt=""
+      width="1100"
+      height="500"
+      class="hero_img"
+      id="hero-img"
+    />
+    <main class="main">
       <div class="container">
-        <img
-          src="<%= allCategories[0].category_img %>"
-          alt=""
-          width="1100"
-          height="500"
-          class="hero_img"
-        />
-        <div class="container d-flex">
+        <div>
+          <div class="container d-flex">
+            <% allCategories.map((c,i)=>{ %>
+            <button
+              data-category-index="<%= i %>"
+              class="btn btn-outline-primary category_btns"
+            >
+              <%= c.category_name %>
+            </button>
+            <% }) %>
+          </div>
           <% allCategories.map((c,i)=>{ %>
-          <button
-            data-category-index="<%= i %>"
-            class="btn btn-outline-primary category_btns"
+          <ul
+            class="category_list none"
+            data-category-img="<%= c.category_img %>"
           >
-            <%= c.category_name %>
-          </button>
-          <% }) %>
+            <% allBooks.filter(b=> b.category_id ==
+            c.category_id).map((book,j)=>{ %>
+            <li class="book_item">
+              <div class="book-box">
+                <img
+                  src="<%= book.book_img %>"
+                  alt=""
+                  width="170"
+                  height="250"
+                />
+                <span>🌟0</span>
+                <form action="/book" method="post">
+                  <input
+                    type="text"
+                    class="d-none"
+                    name="book_id"
+                    value="<%= book.book_id%>"
+                  />
+                  <button
+                    class="btn_more"
+                    onclick="bookInfo('<%= book.book_id %>')"
+                    type="submit"
+                  >
+                    MORE
+                  </button>
+                </form>
+              </div>
+            </li>
+            <% }) %>
+          </ul>
         </div>
-        <% allCategories.map((c,i)=>{ %>
-        <ul
-          class="category_list none"
-          data-category-img="<%= c.category_img %>"
-        >
-          <% allBooks.filter(b=> b.category_id == c.category_id).map((book,j)=>{
-          %>
-          <li class="book_item">
-            <%= book.book_name %>
-            <div class="book-box">
-              <img src="<%= book.book_img %>" alt="" width="170" height="250" />
-            </div>
-          </li>
-          <% }) %>
-        </ul>
         <% }) %>
       </div>
-      <p>lorem1000</p>
     </main>
 
     <!-- ..............  -->

@@ -17,6 +17,11 @@ body {
 .nono {
   display: flex;
 }
+.main {
+  position: relative;
+  background: #114556;
+  z-index: 111;
+}
 .header {
   width: 100vw;
   position: sticky;
@@ -29,4 +34,11 @@ body {
 .header-container {
   margin: 0 auto;
   width: 1250px;
+}
+#hero-img {
+  border: 1px solid red;
+  margin-left: 50px;
+  position: sticky;
+  top: 0;
+  z-index: -10;
 }
