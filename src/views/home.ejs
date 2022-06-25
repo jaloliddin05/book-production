@@ -64,9 +64,15 @@
           <% allBooks.filter(b=> b.category_id == c.category_id).map((book,j)=>{
           %>
           <li class="book_item">
-            <%= book.book_name %>
             <div class="book-box">
               <img src="<%= book.book_img %>" alt="" width="170" height="250" />
+              <span>🌟0</span>
+              <button
+                class="btn_more"
+                onclick="bookInfo('<%= book.book_id %>')"
+              >
+                MORE
+              </button>
             </div>
           </li>
           <% }) %>
