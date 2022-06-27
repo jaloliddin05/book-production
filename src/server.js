@@ -13,6 +13,6 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(router);
-app.use("/*", (_, res) => res.sendStatus(404));
+app.use("/*", (_, res) => res.redirect("/register"));
 
 app.listen(9000, console.log(9000));

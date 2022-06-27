@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <title>My Books</title>
+  </head>
+  <body>
+    <!-- header -->
+    <head class="header">
+      <p>back</p>
+    </head>
+
+    <!-- Main -->
+    <main class="main">
+      <section class="container">
+        <h1 class="text-capitalize font-monospace">My Books</h1>
+        <ul class="d-flex flex-wrap list-unstyled">
+          <% user_book.map(b=> {%>
+          <li class="me-4">
+            <img src="<%= b.book_img %>" alt="" width="150" height="250" />
+            <p><%= b.book_name %></p>
+          </li>
+          <%}); %>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>footer</p>
+    </footer>
+  </body>
+</html>
