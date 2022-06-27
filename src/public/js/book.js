@@ -2,6 +2,7 @@ const rate_circles = document.querySelectorAll(".rate_circles");
 const rate_btn = document.querySelector(".rate_btn");
 const rating_modal_btn = document.querySelector(".rating_modal_btn");
 const modal_title = document.querySelector(".modal-title");
+const book_rating_desc = document.querySelector(".book_rating_desc");
 
 let rete_score = 0;
 let book_id;
@@ -25,7 +26,8 @@ rating_modal_btn.addEventListener("click", () => {
 });
 
 rate_btn.addEventListener("click", () => {
-  fetch("http://localhost:9000/raiting", {
+  console.log("jjj");
+  fetch("http://localhost:9000/book", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -36,5 +38,5 @@ rate_btn.addEventListener("click", () => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
+    .then((data) => (book_rating_desc.textContent = "⭐️ " + data.scoree));
 });
